@@ -14,4 +14,11 @@
             </div>
         </div>
     </div>
+
+<div class="text-center mt-12">
+            <a href="{{ route('posts.index') }}" class="inline-flex items-center text-primary font-medium hover:text-secondary transition-colors">
+                Retour aux articles <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+
 </x-app-layout>
