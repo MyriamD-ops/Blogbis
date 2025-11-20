@@ -36,11 +36,11 @@ class CommentController extends Controller
             'content' => 'required',
         ]);
         $comment = new Comment();
-        $comment->content =$validated['content'];
+        $comment->content = $validated['content'];
         $comment->user_id = Auth::id();
         $comment->save();
 
-        return redirect()->route('Posts.index')->with('success', 'commentaire ajouté');
+        return redirect()->route('posts.index')->with('success', 'commentaire ajouté');
     }
 
     /**
