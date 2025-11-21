@@ -7,8 +7,9 @@
 <!-- Formulaire d'ajout de commentaire -->
                             <!-- Afficher seulement si l'utilisateur est connecté -->
                             @auth
-                            <form class="mt-8" action="{{ route('comments.store', $post->id) }}" method="POST">
-                                @csrf
+                            <form class="mt-8" action="{{ route('comments.store') }}" method="POST">
+                               @csrf
+                                @method('POST')
                                 <h4 class="text-lg font-medium text-secondary mb-4">Ajouter un commentaire</h4>
                                 <div class="mb-4">
                                     <label for="comment-content" class="block text-gray-700 mb-2 font-medium">Votre commentaire</label>

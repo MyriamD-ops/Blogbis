@@ -23,33 +23,26 @@ Route::get('/posts/create', [PostController::class, 'create'])->name('posts.crea
     Route::get('/posts/edit', [PostController::class, 'edit'])->name('posts.edit');
     
     Route::get('/comments/index', [CommentController::class, 'index'])->name('comments.index');
-    Route::post('/comments/{comment}',[CommentController::class, 'store'])->name('commments.store'); 
+    Route::get('/comments/{comment}', [CommentController::class, 'show'])->name('comments.show');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+
 
     Route::middleware('auth')->group(function () {
 
-    
-    
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/comments/{comment}', [CommentController::class, 'show'])->name('comments.show');    
+        
     Route::patch('/comments/{comment}', [CommentController::class, 'update'])->name('comments.update');
     Route::delete('/comments/{comment}', [CommentController::class, 'edit'])->name('comments.edit');
     Route::get('/comments/{comment}',[CommentController::class, 'create'])->name('comments.create');
-       
+    Route::post('/posts/{post}',[CommentController::class, 'store'])->name('comments.store');    
 
-});
-
-
-
-// Route sécurisée pour la création d'un post
-    Route::middleware('auth')->group(function () {
 
     Route::get('/posts/create', [App\Http\Controllers\PostController::class, 'create'])->name('posts.create');
     

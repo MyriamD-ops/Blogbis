@@ -24,9 +24,9 @@
                                     <p class="text-sm"> {{ $post->created_at->format('d M Y')  }} </p>
                                 </div>
                             </div>
-                            <div class="flex space-x-4">
+                          
                                 
-                                    <i class="far fa-comment"></i> <span class="ml-1">{{ $post->comments}}</span>
+                                    <i class="far fa-comment"></i> <span class="ml-1"></span>
                                 </button>
                                 <button class="text-gray-500 hover:text-primary transition-colors">
                                     <i class="fas fa-share"></i>
@@ -68,24 +68,24 @@
                                 <p class="text-gray-700">{{ $comment->content }}</p>
                             </div>
                             
-                            <!-- 
+                            
                             @endforeach
                             
                             Si aucun commentaire :
                             @if($post->comments->isEmpty())
                             <p class="text-gray-500 text-center py-4">Aucun commentaire pour le moment. Soyez le premier à réagir !</p>
                             @endif
-                            -->
+                            
                             
                             <!-- Formulaire d'ajout de commentaire -->
                             <!-- Afficher seulement si l'utilisateur est connecté -->
                             @auth
-                            <form class="mt-8" action="{{ route('posts.show',$post->id)}}" method="GET">
+                            <form class="mt-8" action="{{ route('comments.store', $post) }}" method="POST">
                                 @csrf   
-                                @method('STORE')
+                                @method('POST')
                                 <h4 class="text-lg font-medium text-secondary mb-4">Ajouter un commentaire</h4>
                                 <div class="mb-4">
-                                    <label for="comment-content" class="block text-gray-700 mb-2 font-medium">Votre commentaire</label>
+                                   
                                     <textarea id="comment-content" name="content" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Partagez votre opinion..."></textarea>
                                     @error('content')
                                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
